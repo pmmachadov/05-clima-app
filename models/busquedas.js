@@ -101,15 +101,16 @@ class Busquedas {
     }
 
     leerDB() {
-        //Debe de existir
+ 
         if (!fs.existsSync(this.dbPath)) return;
-
-        //Leer DB
-        const info = fs.readFileSync(this.dbPath, {
-            encoding: "utf-8"
-        });
-        const data = JSON.parse(info);
-        this.historial = data.historial;
+ 
+        const info = fs.readFileSync(this.dbPath, { encoding: 'utf-8' });
+ 
+        if (!info) return;
+ 
+        const { historial } = JSON.parse(info);
+ 
+        this.historial = [...historial];
     }
 }
 
