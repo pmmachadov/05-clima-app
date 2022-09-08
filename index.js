@@ -36,7 +36,7 @@ const main = async () => {
                 const lugarSel = lugares.find(l => l.id === id);
 
                 //Guardar en DB
-                busquedas.agregarHistorial(lugares.nombre);
+                busquedas.agregarHistorial(lugarSel.nombre);
 
                 //Clima
                 const clima = await busquedas.climaLugar(lugarSel.lat, lugarSel.lng);
